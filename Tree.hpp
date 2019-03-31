@@ -7,6 +7,7 @@ namespace ariel{
 		int value;
 		Node *left;
 		Node *right;
+		Node *parent;
 	};
 	
 	using std::cout, std::endl;
@@ -30,9 +31,9 @@ namespace ariel{
 			
 		private:
 			void insert(int i,Node *node);
-			Node* newNode(int value);
-			bool contains(int i,Node *node);
+			Node* newNode(int value,Node* parent);
 			Node* find(int i,Node *node);
+			void print(Node *root, int space);
 	
 	};
 
