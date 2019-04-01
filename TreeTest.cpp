@@ -12,10 +12,10 @@ using std::cout, std::endl;
 
 int main() {
 	ariel::Tree emptytree;
-	/*ariel::Tree threetree;  
+	ariel::Tree threetree;  
 	threetree.insert(5);
 	threetree.insert(7);
-	threetree.insert(3);*/
+	threetree.insert(3);
   
 	  
 
@@ -25,12 +25,12 @@ int main() {
 	.CHECK_OK    (emptytree.insert(5))
 	.CHECK_EQUAL (emptytree.size(), 1)
 	.CHECK_EQUAL (emptytree.contains(5), true)
-	/*.CHECK_OK    (emptytree.remove(5))
+	.CHECK_OK    (emptytree.remove(5))
 	.CHECK_EQUAL (emptytree.contains(5), false)
 	.CHECK_THROWS(emptytree.remove(5))
-	.CHECK_EQUAL (emptytree.size() ,0)*/
+	.CHECK_EQUAL (emptytree.size() ,0)
   
-	/*.CHECK_EQUAL (threetree.size(), 3)
+	.CHECK_EQUAL (threetree.size(), 3)
 	.CHECK_EQUAL (threetree.root(), 5)
 	.CHECK_EQUAL (threetree.parent(3), 5)
 	.CHECK_EQUAL (threetree.parent(7), 5)
@@ -38,11 +38,10 @@ int main() {
 	.CHECK_EQUAL (threetree.right(5), 7)
 	.CHECK_THROWS(threetree.insert(3))
 	.CHECK_THROWS(threetree.left(6))
-	.CHECK_OK    (threetree.print())*/
 	.print();
   
 	cout << "You have " << tc.right() << " right answers and " << tc.wrong() << " wrong answers so your grade is " << tc.grade() << ". Great!" << endl;
-  /*
+  
 	//my test
 	ariel::Tree mytree;
 	//test1 test all the method
@@ -79,14 +78,15 @@ int main() {
 	//test parent
 	.CHECK_EQUAL (Test1Tree.parent(6), 2)
 	//test left
-	.CHECK_EQUAL (Test1Tree.parent(10), 2)
+	.CHECK_EQUAL (Test1Tree.left(10), 2)
 	//test right
-	.CHECK_EQUAL (Test1Tree.parent(6), 9)
+	.CHECK_EQUAL (Test1Tree.right(6), 9)
 	//test print and print the badkan result.
 	.CHECK_OK    (Test1Tree.print())
 	.print();
 	
 	cout << "You have " << Test1Tc.right() << " right answers and " << Test1Tc.wrong() << " wrong answers so your grade is " << Test1Tc.grade() << ". Great!" << endl;
+	
 	
 	//test 2 1 to 100
 	ariel::Tree test2Tree;  
@@ -108,6 +108,7 @@ int main() {
 	test2Tc.print();
 	cout << "You have " << test2Tc.right() << " right answers and " << test2Tc.wrong() << " wrong answers so your grade is " << test2Tc.grade() << ". Great!" << endl;
 	
+	
 	//test 3. no Extreme case. maybe hare have bug.
 	//	5
 	// /   \
@@ -126,6 +127,7 @@ int main() {
 	
 	cout << "You have " << test3Tc.right() << " right answers and " << test3Tc.wrong() << " wrong answers so your grade is " << test3Tc.grade() << ". Great!" << endl;
 	
+	
 	//test 4. empty tree
 	ariel::Tree test4Tree;  
 	badkan::TestCase test4Tc("Binary tree");
@@ -136,10 +138,10 @@ int main() {
 	test4Tc.CHECK_THROWS(test4Tree.parent(8));
 	test4Tc.CHECK_THROWS(test4Tree.left(8));
 	test4Tc.CHECK_THROWS(test4Tree.right(8));
-	test4Tc.CHECK_OK(test3Tree.insert(8));
-	test4Tc.CHECK_OK(test3Tree.remove(8));
+	test4Tc.CHECK_OK(test4Tree.insert(8));
+	test4Tc.CHECK_OK(test4Tree.remove(8));
 	test4Tc.CHECK_EQUAL(test4Tree.size(),0);
-	test4Tc.CHECK_THROWS(test4Tree.contains(8));
+	test4Tc.CHECK_EQUAL(test4Tree.contains(8),false);
 	test4Tc.CHECK_THROWS(test4Tree.root());
 	test4Tc.CHECK_THROWS(test4Tree.parent(8));
 	test4Tc.CHECK_THROWS(test4Tree.left(8));
@@ -149,17 +151,19 @@ int main() {
 	
 	cout << "You have " << test4Tc.right() << " right answers and " << test4Tc.wrong() << " wrong answers so your grade is " << test4Tc.grade() << ". Great!" << endl;
 	
+	
+	
 	//test 5. single value tree.
 	ariel::Tree test5Tree;  
 	badkan::TestCase test5Tc("Binary tree");
 	
 	test5Tc.CHECK_OK(test5Tree.insert(8));
-	test5Tc.CHECK_EQUAL(test5Tree.contains(8),false);
+	test5Tc.CHECK_EQUAL(test5Tree.contains(8),true);
 	test5Tc.CHECK_THROWS(test5Tree.parent(8));
 	test5Tc.CHECK_THROWS(test5Tree.left(8));
 	test5Tc.CHECK_THROWS(test5Tree.right(8));
 	test5Tc.print();
 	
 	cout << "You have " << test5Tc.right() << " right answers and " << test5Tc.wrong() << " wrong answers so your grade is " << test5Tc.grade() << ". Great!" << endl;
-	*/
+	
 }

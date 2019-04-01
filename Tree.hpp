@@ -30,8 +30,12 @@ namespace ariel{
 			void print();
 			
 		private:
+		
+			void freeTree(Node* node);
 			void insert(int i,Node *node);
 			Node* newNode(int value,Node* parent);
+			Node* deleteNode(Node* root,int key);
+			Node* minValueNode(Node* node);
 			Node* find(int i,Node *node);
 			void print(Node *root, int space);
 	
