@@ -10,20 +10,28 @@ using ariel::Node;
 using std::string;
 using std::to_string;
 
-
+//Constructor 
 Tree::Tree()
 	: head(NULL), length(0){
 		
 	}
 	
 	
-Tree::~Tree(){//FIXME
-	cout << "need delete all the nodes. not build yet." << endl;
+//destructor
+Tree::~Tree(){
+	freeTree(this->head);
 	}
 	
+//delete all the nodes from memory.
 void Tree::freeTree(Node* node){
+	if(node == NULL)
+		return;
+	freeTree(node->right);
+	freeTree(node->left);
+	delete node;
 }
 	
+//make new node.
 Node* Tree::newNode(int value,Node* parent){
 	Node *node = new Node;
 	node->value = value;
@@ -33,6 +41,7 @@ Node* Tree::newNode(int value,Node* parent){
 	return node;
 }
 
+//insert lke in the homework readme.pdf.
 void Tree::insert(int i) {
 	if(this->head == NULL){
 		this->head = newNode(i,NULL);		
@@ -42,6 +51,7 @@ void Tree::insert(int i) {
 	this->length++;
 }
 
+//recursive insert.
 void Tree::insert(int i,Node *node) {
 	 if (i < node->value){//left
 		if(node->left == NULL){
@@ -121,21 +131,24 @@ Node* Tree::minValueNode(Node* node){
 	return current; 
 }
 
-
+//remove like in the homework readme.pdf.
 void Tree::remove(int i) {
 	this->head = deleteNode(this->head,i);
 }
 
+//size like in the homework readme.pdf.
 int Tree::size(){
 	return length;
 }
 
+//contains like in the homework readme.pdf.
 bool Tree::contains(int i){
 	Node* a = find(i,this->head);
 	return(a != NULL);
 }
 
 
+//finde nood with value. use for contains,parent,left and right function.
 Node* Tree::find(int i,Node *node){
 	if(node == NULL)
 		return NULL;
@@ -147,6 +160,7 @@ Node* Tree::find(int i,Node *node){
 		return find(i,node->right);
 }
 
+//root like in the homework readme.pdf.
 int Tree::root(){
 	if(this->head == NULL)
 		throw string( "tree is empty" );
@@ -154,6 +168,7 @@ int Tree::root(){
 		return this->head->value;
 }
 
+//parent like in the homework readme.pdf.
 int Tree::parent(int i){
 	Node* node = find(i,this->head);
 	if(node == NULL){
@@ -166,6 +181,7 @@ int Tree::parent(int i){
 		return node->parent->value;
 }
 
+//left like in the homework readme.pdf.
 int Tree::left(int i){
 	Node* node = find(i,this->head);
 	if(node == NULL){
@@ -178,6 +194,7 @@ int Tree::left(int i){
 		return node->left->value;
 }
 
+//right like in the homework readme.pdf.
 int Tree::right(int i){
 	Node* node = find(i,this->head);
 	if(node == NULL){
@@ -190,10 +207,13 @@ int Tree::right(int i){
 		return node->right->value;
 }
 
+//print like in the homework readme.pdf.
 void Tree::print(){
 	print(this->head,0);	
 }
 
+// Function to print binary tree in 2D  
+// It does reverse inorder traversal 
 void Tree::print(Node *root, int space) {
 	
 	// Base case  

@@ -30,13 +30,19 @@ namespace ariel{
 			void print();
 			
 		private:
-		
+			//delete all the nodes from memory.
 			void freeTree(Node* node);
+			//recursive insert.
 			void insert(int i,Node *node);
+			//make new node.
 			Node* newNode(int value,Node* parent);
+			//recursive remove
 			Node* deleteNode(Node* root,int key);
+			//Given a non-empty binary search tree, return the node with minimum key value found in that tree.
 			Node* minValueNode(Node* node);
+			//finde nood with value. use for contains,parent,left and right function.
 			Node* find(int i,Node *node);
+			//print 2-Dimensions tree tank to geeksforgeeks website.
 			void print(Node *root, int space);
 	
 	};
